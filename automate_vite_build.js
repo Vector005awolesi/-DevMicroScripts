@@ -141,6 +141,14 @@ function App() {
 
 export default App;`;
   fs.writeFileSync(path.join(targetDir, 'src/App.jsx'), minimalAppContent);
+  // 8. Create the .gitignore file to keep the repo clean
+  const gitIgnoreContent = `node_modules
+dist
+.env
+.env.local
+npm-debug.log
+.DS_Store`;
+  fs.writeFileSync(path.join(targetDir, '.gitignore'), gitIgnoreContent);
 
   // 8. Run npm install down at the very end
   console.log("📦 Installing core & dev dependencies via npm...");
