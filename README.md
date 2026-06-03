@@ -1,4 +1,4 @@
-# ⚡ DevMicroScripts
+# -DevMicroScripts
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
@@ -81,8 +81,18 @@ Before launching the scripts, ensure your workspace has the following global too
 3. **[jq](https://jqlang.github.io/jq/)** — A lightweight command-line JSON processor
    - Required **only** if you plan to use the `.sh` AI commit script
    - Used for parsing JSON responses from the AI API
-   - Install via: `brew install jq` (macOS) or `choco install jq` (Windows with Chocolatey)
-   - Verify installation: `jq --version`
+   
+**Installation options:**
+
+- **macOS:** `brew install jq`
+- **Windows (Chocolatey):** `choco install jq`
+- **Windows (Manual - Git Bash):** 
+  1. Download the jq executable from [jqlang.github.io/jq/download](https://jqlang.github.io/jq/download/)
+  2. Extract the jq file (rename it to `jq.exe` if it has a different name eg:jq-64-bit.exe)
+  3. Copy it to your Git installation's bin folder: `C:\Program Files\Git\usr\bin\` (or wherever Git is installed)
+  4. Verify: Open Git Bash and run `jq --version`
+
+- **Linux:** `sudo apt-get install jq` (Ubuntu/Debian) or `sudo yum install jq` (CentOS/RHEL)
 
 ---
 
@@ -124,6 +134,10 @@ If you are using the AI Automated Commit scripts, open the file (`automated_comm
 const API_KEY = "sk-proj-YOUR_ACTUAL_KEY_HERE";
 ```
 
+**Supported API Providers:**
+- OpenAI GPT-4 / GPT-3.5
+- Cerebras API (recommended for cost efficiency)
+
 ---
 
 ## 🏎️ Creating Terminal Shortcuts (Aliases)
@@ -155,13 +169,6 @@ alias gca-sh="~/Documents/DevMicroScripts/automated_commit.sh"
 source ~/.bashrc
 ```
 
-4. Verify the aliases work:
-
-```bash
-qv4 --help
-gca --help
-```
-
 ### For Zsh (macOS default)
 
 1. Open your configuration file:
@@ -176,13 +183,6 @@ nano ~/.zshrc
 
 ```bash
 source ~/.zshrc
-```
-
-4. Verify the aliases work:
-
-```bash
-qv4 --help
-gca --help
 ```
 
 ### Understanding the Shortcuts
@@ -297,11 +297,24 @@ That's it! Your commit is created with a semantic, descriptive message.
 **Cause:** You are missing the `jq` library required for the Bash AI committer.
 
 **Solution:**
-- Install jq:
-  - macOS: `brew install jq`
-  - Windows (Chocolatey): `choco install jq`
-  - Windows (Manual): [Download from jqlang.github.io](https://jqlang.github.io/jq/download/)
-- Or switch to the Node.js equivalent: `node ./automated_commit.js`
+
+**For Windows (Git Bash):**
+- Download jq from [jqlang.github.io/jq/download](https://jqlang.github.io/jq/download/)
+- If the filename is not `jq.exe`, rename it to `jq.exe`
+- Copy it to: `C:\Program Files\Git\usr\bin\` (or your Git installation folder)
+- Restart Git Bash and run `jq --version` to verify
+
+**For macOS:**
+- Install jq: `brew install jq`
+
+**For Windows (Chocolatey):**
+- Install jq: `choco install jq`
+
+**For Linux:**
+- Install jq: `sudo apt-get install jq` (Ubuntu/Debian)
+
+**Or switch to the Node.js equivalent:**
+- Use `node ./automated_commit.js` instead (no jq required)
 
 ### Error: `Command not found: qv4`
 **Cause:** The alias is not recognized. The shell hasn't reloaded your configuration file.
