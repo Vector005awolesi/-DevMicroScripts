@@ -124,10 +124,6 @@ If you are using the AI Automated Commit scripts, open the file (`automated_comm
 const API_KEY = "sk-proj-YOUR_ACTUAL_KEY_HERE";
 ```
 
-**Supported API Providers:**
-- OpenAI GPT-4 / GPT-3.5
-- Cerebras API (recommended for cost efficiency)
-
 ---
 
 ## 🏎️ Creating Terminal Shortcuts (Aliases)
