@@ -131,6 +131,32 @@ function App() {
 
 export default App;
 EOF
+# Create the .gitignore file
+cat << EOF > .gitignore
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+# production
+dist
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+EOF
+
 
 # 8. Run npm install down at the very end
 echo "📦 Installing core & dev dependencies via npm..."
