@@ -17,8 +17,8 @@ Instead of manually running repetitive strings of terminal commands or wrestling
 1. [Available Scripts](#-available-scripts)
 2. [Global Prerequisites](#️-global-prerequisites)
 3. [Installation & Setup](#-installation--setup)
-4. [Usage Guide](#-usage-guide)
-5. [Creating Terminal Shortcuts](#-creating-terminal-shortcuts-aliases)
+4. [Creating Terminal Shortcuts](#-creating-terminal-shortcuts-aliases)
+5. [Usage Guide](#-usage-guide)
 6. [Script Deep Dives](#-script-deep-dives)
 7. [Troubleshooting](#-troubleshooting)
 8. [Contributing](#-contributing)
@@ -130,68 +130,9 @@ const API_KEY = "sk-proj-YOUR_ACTUAL_KEY_HERE";
 
 ---
 
-## 🕹️ Usage Guide
-
-### Scaffold a new Vite + Tailwind Project
-
-Navigate to your parent development folder and call the script, passing your desired project folder name as the argument.
-
-**Using the Node.js Engine:**
-
-```bash
-node ~/Documents/DevMicroScripts/automate_vite_build.js my-new-app
-```
-
-**Using the Bash Engine:**
-
-```bash
-~/Documents/DevMicroScripts/automate_vite_build.sh my-new-app
-```
-
-Once complete, simply navigate and start developing:
-
-```bash
-cd my-new-app
-npm run dev
-```
-
-Your development server will start at `http://localhost:5173` with hot module reloading enabled.
-
-### Generate an AI Git Commit
-
-Stage your modifications (optional—the script will auto-stage if empty) and execute the script.
-
-**Step 1: Stage your changes**
-
-```bash
-git add .
-# Or stage specific files
-git add src/components/Button.jsx
-```
-
-**Step 2: Run the committer**
-
-**Using the Node.js Engine:**
-
-```bash
-node ~/Documents/DevMicroScripts/automated_commit.js
-```
-
-**Using the Bash Engine:**
-
-```bash
-~/Documents/DevMicroScripts/automated_commit.sh
-```
-
-**Step 3: Review and confirm**
-
-The script will display the generated commit message. Review it, then press `Enter` to confirm or `Ctrl+C` to cancel.
-
----
-
 ## 🏎️ Creating Terminal Shortcuts (Aliases)
 
-To skip typing out the long absolute file paths every single time, you can create brief terminal command shortcuts inside your shell configuration profile.
+**This is the most important step!** Setting up terminal shortcuts lets you run scripts from anywhere without typing long file paths.
 
 ### For Bash (Linux / Git Bash on Windows)
 
@@ -218,6 +159,13 @@ alias gca-sh="~/Documents/DevMicroScripts/automated_commit.sh"
 source ~/.bashrc
 ```
 
+4. Verify the aliases work:
+
+```bash
+qv4 --help
+gca --help
+```
+
 ### For Zsh (macOS default)
 
 1. Open your configuration file:
@@ -234,21 +182,76 @@ nano ~/.zshrc
 source ~/.zshrc
 ```
 
-### Usage Examples
-
-Now you can build an entire workspace with just:
+4. Verify the aliases work:
 
 ```bash
-qv4 my-project
-cd my-project
+qv4 --help
+gca --help
+```
+
+### Understanding the Shortcuts
+
+| Alias | What it does |
+|-------|------------|
+| `qv4` | Creates a new Vite + Tailwind project (Node.js version) |
+| `qv4-sh` | Creates a new Vite + Tailwind project (Bash version) |
+| `gca` | Generates an AI-powered git commit (Node.js version) |
+| `gca-sh` | Generates an AI-powered git commit (Bash version) |
+
+**Pro Tip:** Most developers prefer the Node.js versions (`qv4` and `gca`) since they're faster and require fewer dependencies. The Bash versions are there as alternatives.
+
+---
+
+## �️ Usage Guide
+
+**Before using any scripts, make sure you've set up your terminal shortcuts (aliases) as described in the [Creating Terminal Shortcuts](#-creating-terminal-shortcuts-aliases) section above.**
+
+### Scaffold a new Vite + Tailwind Project
+
+Once your shortcuts are configured, creating a new project is simple:
+
+```bash
+qv4 my-new-app
+```
+
+That's it! The script will:
+- Create a new directory called `my-new-app`
+- Set up a complete React + Vite + Tailwind project structure
+- Install all dependencies
+- Show you the next steps
+
+Then navigate to your project and start the dev server:
+
+```bash
+cd my-new-app
 npm run dev
 ```
 
-Or commit your code with:
+Your development server will start at `http://localhost:5173` with hot module reloading enabled.
+
+### Generate an AI Git Commit
+
+Making commits with AI-generated messages is just as easy:
+
+**Step 1: Stage your changes**
+
+```bash
+git add .
+# Or stage specific files
+git add src/components/Button.jsx
+```
+
+**Step 2: Generate your commit**
 
 ```bash
 gca
 ```
+
+**Step 3: Review and confirm**
+
+The script will display the generated commit message. Press `Enter` to confirm or `Ctrl+C` to cancel.
+
+That's it! Your commit is created with a semantic, descriptive message.
 
 ---
 
