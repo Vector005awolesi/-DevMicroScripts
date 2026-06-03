@@ -80,7 +80,8 @@ cd DevMicroScripts
 If you are operating on Linux, macOS, or using Git Bash on Windows, grant absolute system permissions to make the scripts executable directly from the terminal:
 
 ```bash
-chmod +x *.sh *.js
+chmod +x automated_commit.sh || automated_commit.js
+chmod +x automate_vite_build.sh || automate_vite_build.js
 
 ```
 
